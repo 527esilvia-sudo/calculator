@@ -27,31 +27,40 @@ function showSymbol(operator) {
     }
 }
 
-    function updateScreen() {
-        const display = document.getElementById('displayLine')
-        const history = document.getElementById('historyLine')
-        const status = document.getElementById('statusLine')
+function updateScreen() {
+    const display = document.getElementById('displayLine')
+    const history = document.getElementById('historyLine')
+    const status = document.getElementById('statusLine')
 
-        display.textContent = typedNumberText
-    }
-
-
+    display.textContent = typedNumberText
+}
 
 
 
-
-    function pressNumber(digit) {
-        setStatus('')
-       if(typedNumberText === '0'){
+function pressNumber(digit) {
+    setStatus('')
+    if (typedNumberText === '0') {
         typedNumberText = digit
-       }
-       else {
-         typedNumberText = typedNumberText + digit
-       }
-        updateScreen()
+    }
+    else {
+        typedNumberText = typedNumberText + digit
+    }
+    updateScreen()
 
+}
+
+function pressOperator(operator) {
+
+    setStatus("")
+    if (typedNumberText === '' && storedNumber === null) {
+        setStatus("Type a number first.")
     }
 
-    function pressOperator(operator) {
-        console.log(operator)
+    if (storedNumber === null) {
+  storedNumber = Number(typedNumberText)
+  currentOperator = operator
+  historyParts= [String(storedNumber), currentOperator]
+  typedNumberText = ''
+  updateScreen()
     }
+}
