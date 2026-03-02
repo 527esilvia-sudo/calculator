@@ -105,3 +105,53 @@ function clearAll () {
     setStatus('Cleared.')
     updateScreen()
 }
+
+ let result = storedNumber
+
+    if (currentOperator === '+') {
+        result = storedNumber + secondNumber
+    }
+   else if (currentOperator === '-') {
+        result = storedNumber - secondNumber
+    }
+   else if (currentOperator === '*') {
+        result = storedNumber * secondNumber
+    }   
+   else if (currentOperator === '/') {
+        result = storedNumber / secondNumber
+        }
+        
+}
+
+function calculate(){
+    setStatus('')
+    if (storedNumber === null || currentOperator === '' || typedNumberText === '') {
+        setStatus('Incomplete operation.')
+        updateScreen()
+        return 
+    }
+    const secondNumber = Number(typedNumberText)
+    let result = storedNumber
+
+    if (currentOperator === '+') {
+        result = storedNumber + secondNumber
+    }
+   else if (currentOperator === '-') {
+        result = storedNumber - secondNumber
+    }
+   else if (currentOperator === '*') {
+        result = storedNumber * secondNumber
+    }   
+   else if (currentOperator === '/') {
+        result = storedNumber / secondNumber
+        }
+
+        storedNumber = result
+        typedNumberText = ''
+        currentOperator = ''
+        setStatus('Done')
+        updateScreen()
+}
+
+
+
